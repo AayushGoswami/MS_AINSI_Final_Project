@@ -1,0 +1,8 @@
+torch
+torchvision
+kagglehub
+Pillow
+glob2
+os
+ipykernel
+jupyter

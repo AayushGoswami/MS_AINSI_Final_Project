@@ -13,19 +13,47 @@ A leading fruit supply company requires an automated system to classify fresh an
 ## Project Structure
 
 ```
-fruit_classification.ipynb   # Main Jupyter notebook with the full workflow
-utils.py                    # Utility functions for training and validation
-requirements.txt            # Python dependencies
-images/                     # Directory containing project images
-    logo.png                # Project logo
-    fruits.png              # Example fruit images
-model/                      # Directory containing the saved model
-    fruit_classification_model.pth  # Trained model file
-LICENSE                     # MIT License
-README.md                   # Project documentation
-Presentation_Deck/          # Directory containing the project presentation
-    Aayush_Goswami_Project_Presentation.pdf  # Final presentation deck
+├── app.py                                      # Streamlit app for fruit classification
+├── fruit_classification.ipynb                  # Main Jupyter notebook with the full workflow
+├── utils.py                                    # Utility functions for training and validation
+├── requirements.txt                            # Python dependencies
+├── images/                                     # Directory containing project images
+│   └── logo.png                                # Project logo
+│   └── fruits.png                              # Example fruit images
+│   └── pic1.png     --------------------------| 
+│   └── pic2.png     --------------------------|# Example fresh and rotten fruit images
+│   └── pic3.png     --------------------------|
+├── model/                                      # Directory containing the saved model
+│   └── fruit_classification_model.pth          # Trained model file
+├── LICENSE                                     # MIT License
+├── README.md                                   # Project documentation
+├── Presentation_Deck/                          # Directory containing the project presentation
+│   └── Aayush_Goswami_Project_Presentation.pdf # Final presentation deck
 ```
+
+## How to Run the app
+
+This project includes a Streamlit app for easy image classification. Follow these steps to run the app:
+
+### 1. Install Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run the Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+### 3. Usage Instructions
+
+- Upload a clear image of an apple, banana, or orange (fresh or rotten) in JPG or PNG format.
+- The app will display the predicted class:
+  - **Green (Success):** If the fruit is fresh.
+  - **Red (Error):** If the fruit is rotten or if the image is not recognized as a supported fruit.
+- If the image is not a supported fruit, an error message will be shown.
 
 ## Features
 
@@ -94,6 +122,11 @@ See `requirements.txt` for all dependencies:
 - os
 - ipykernel
 - jupyter
+
+## Limitations
+
+- The model is trained **only** on apples, bananas, and oranges. Images of other fruits or objects may not be classified correctly.
+- For best results, upload clear, well-lit images of single fruits.
 
 ## License
 

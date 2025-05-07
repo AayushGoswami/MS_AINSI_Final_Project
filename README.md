@@ -1,4 +1,4 @@
-# Fruit Classification Using Deep Learning
+# Fruit Quality Assessment using Deep Learning
 
 ## Overview
 
@@ -16,11 +16,15 @@ A leading fruit supply company requires an automated system to classify fresh an
 fruit_classification.ipynb   # Main Jupyter notebook with the full workflow
 utils.py                    # Utility functions for training and validation
 requirements.txt            # Python dependencies
-images/
+images/                     # Directory containing project images
     logo.png                # Project logo
     fruits.png              # Example fruit images
+model/                      # Directory containing the saved model
+    fruit_classification_model.pth  # Trained model file
 LICENSE                     # MIT License
 README.md                   # Project documentation
+Presentation_Deck/          # Directory containing the project presentation
+    Aayush_Goswami_Project_Presentation.pdf  # Final presentation deck
 ```
 
 ## Features
@@ -64,7 +68,11 @@ README.md                   # Project documentation
 
 4. **Training and Evaluation**
 
-   The notebook will train the model, validate its performance, and save the trained weights.
+   The notebook will train the model, validate its performance, and save the trained weights in the `model/` directory.
+
+5. **Presentation Deck**
+
+   The final project presentation is available in the `Presentation_Deck/` directory as `Aayush_Goswami_Project_Presentation.pdf`.
 
 ## Utility Functions
 

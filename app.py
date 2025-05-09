@@ -1,6 +1,8 @@
 import streamlit as st
 import torch
 import torchvision.transforms.v2 as transforms
+from torchvision.models import vgg16
+from torch import nn
 from PIL import Image
 import os
 
@@ -10,11 +12,30 @@ DATA_LABELS = ["freshapples", "freshbanana", "freshoranges", "rottenapples", "ro
 # Set device
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+class FruitClassifier(nn.Module):
+    def __init__(self):
+        super(FruitClassifier, self).__init__()
+        N_CLASSES = 6
+        vgg_model = vgg16(weights=None)  # Initialize without pre-trained weights
+        vgg_model.requires_grad_(False)  # Freeze base model
+        self.model = nn.Sequential(
+            vgg_model.features,
+            vgg_model.avgpool,
+            nn.Flatten(),
+            vgg_model.classifier[0:3],
+            nn.Linear(4096, 500),
+            nn.ReLU(),
+            nn.Linear(500, N_CLASSES)
+        )
+
+    def forward(self, x):
+        return self.model(x)
+
 # Load the trained model
 @st.cache_resource
 def load_model():
     model_path = os.path.join("model", "fruit_classification_model.pth")
-    model = torch.load(model_path, map_location=DEVICE, weights_only=False)
+    model = torch.load(model_path, map_location=DEVICE,weights_only=False)
     model.eval()
     return model
 
